@@ -1,0 +1,54 @@
+.simon {
+  height: 330px;
+  width: 330px;
+  background: #3d3d3d;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 50%;
+  border: 8px solid black;
+  overflow: hidden;
+  margin: 3rem auto;
+  position: relative;
+}
+
+.simon__green-box {
+  width: 50%;
+  height: 50%;
+  background: green;
+}
+
+.simon__red-box {
+  width: 50%;
+  height: 50%;
+  background: red;
+}
+
+.simon__yellow-box {
+  width: 50%;
+  height: 50%;
+  background: yellow;
+}
+
+.simon__blue-box {
+  width: 50%;
+  height: 50%;
+  background: blue;
+}
+
+.simon__controls {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: #d8d8d8;
+  text-align: center;
+  border: 8px solid black;
+}
+
+.simon__controls h2 {
+  margin-top: 1rem;
+}
