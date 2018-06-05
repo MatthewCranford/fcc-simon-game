@@ -1,54 +1,90 @@
 .simon {
-  height: 330px;
-  width: 330px;
-  background: #3d3d3d;
-  display: flex;
-  flex-wrap: wrap;
-  border-radius: 50%;
-  border: 8px solid black;
-  overflow: hidden;
-  margin: 3rem auto;
-  position: relative;
+    height: 330px;
+    width: 330px;
+    background: #3d3d3d;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 50%;
+    border: 8px solid black;
+    overflow: hidden;
+    margin: 3rem auto;
+    position: relative;
 }
 
 .simon__green-box {
-  width: 50%;
-  height: 50%;
-  background: green;
+    width: 50%;
+    height: 50%;
+    background: green;
 }
 
 .simon__red-box {
-  width: 50%;
-  height: 50%;
-  background: red;
+    width: 50%;
+    height: 50%;
+    background: red;
 }
 
 .simon__yellow-box {
-  width: 50%;
-  height: 50%;
-  background: yellow;
+    width: 50%;
+    height: 50%;
+    background: yellow;
 }
 
 .simon__blue-box {
-  width: 50%;
-  height: 50%;
-  background: blue;
+    width: 50%;
+    height: 50%;
+    background: blue;
 }
 
 .simon__controls {
-  position: absolute;
-  z-index: 1;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 190px;
-  height: 190px;
-  border-radius: 50%;
-  background: #d8d8d8;
-  text-align: center;
-  border: 8px solid black;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: #d8d8d8;
+    text-align: center;
+    border: 8px solid black;
 }
 
 .simon__controls h2 {
-  margin-top: 1rem;
+    margin-top: 1rem;
+}
+
+.simon__controls-switch {
+    height: 25px;
+    width: 50px;
+    display: inline-block;
+    position: relative;
+}
+
+.simon__controls-switch-slider {
+    position: absolute;
+    background: black;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.4s;
+}
+
+.simon__controls-switch-slider::before {
+    position: absolute;
+    content: '';
+    height: 18px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+.simon__controls-switch input {
+    display: none;
+}
+
+input:checked + .simon__controls-switch-slider::before {
+    transform: translateX(20px);
 }
