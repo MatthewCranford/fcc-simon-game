@@ -53,11 +53,17 @@
     margin-top: 1rem;
 }
 
+.simon__controls-bottom-row {
+    display: flex;
+    justify-content: center;
+}
+
 .simon__controls-switch {
     height: 25px;
-    width: 50px;
+    width: 48px;
     display: inline-block;
     position: relative;
+    margin: 0 0.3rem;
 }
 
 .simon__controls-switch-slider {
