@@ -30,3 +30,11 @@ strictBtn.addEventListener('click', () => {
         }
     }
 });
+
+startBtn = document.querySelector('#simon__start-button');
+
+startBtn.addEventListener('click', () => {
+    if (powerOn) {
+        // Start game
+    }
+});
