@@ -1,3 +1,17 @@
+// Game sounds
+const soundOne = new Audio(
+    'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'
+);
+const soundTwo = new Audio(
+    'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'
+);
+const soundThree = new Audio(
+    'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'
+);
+const soundFour = new Audio(
+    'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'
+);
+
 const powerBtn = document.getElementById('simon__power-button');
 let powerOn = false;
 
