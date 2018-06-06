@@ -7,5 +7,10 @@ powerBtn.addEventListener('change', () => {
     } else {
         powerOn = false;
     }
-    console.log(powerOn);
+    showDisplay();
 });
+
+function showDisplay() {
+    display = document.querySelector('.simon__display');
+    display.classList.toggle('hide');
+}

@@ -60,15 +60,19 @@
     align-items: flex-end;
 }
 
-.simon__count-box {
+.simon__display {
     width: 60px;
     height: 30px;
-    background: rgb(58, 47, 47);
+    background: #3a2f2f;
     margin: auto;
     border: 2px solid black;
     color: red;
     display: flex;
     justify-content: space-around;
+}
+
+.simon__display.hide {
+    color: #3a2f2f;
 }
 
 .simon__button {
