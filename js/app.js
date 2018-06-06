@@ -14,3 +14,19 @@ function showDisplay() {
     display = document.querySelector('.simon__display');
     display.classList.toggle('hide');
 }
+
+strictBtn = document.querySelector('#simon__strict-button');
+strictOn = false;
+
+strictBtn.addEventListener('click', () => {
+    if (powerOn) {
+        strictDisplay = document.querySelector('#simon__strict-display');
+        if (strictOn) {
+            strictOn = false;
+            strictDisplay.innerHTML = '';
+        } else {
+            strictOn = true;
+            strictDisplay.innerHTML = 's';
+        }
+    }
+});
