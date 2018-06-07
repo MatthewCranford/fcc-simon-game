@@ -50,5 +50,19 @@ startBtn = document.querySelector('#simon__start-button');
 startBtn.addEventListener('click', () => {
     if (powerOn) {
         // Start game
+        initGame();
     }
 });
+
+function initGame() {
+    // Pick a random num 1-4
+    getRandomMove();
+    // Light up random color
+    // Increase count
+}
+
+function getRandomMove() {
+    return Math.floor(Math.random() * Math.floor(4) + 1);
+}
+
+console.log(getRandomMove());
