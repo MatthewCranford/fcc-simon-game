@@ -11,27 +11,24 @@
     position: relative;
 }
 
-.simon__green-box {
+.simon__sequence {
     width: 50%;
     height: 50%;
+}
+
+.simon__sequence--green {
     background: green;
 }
 
-.simon__red-box {
-    width: 50%;
-    height: 50%;
+.simon__sequence--red {
     background: red;
 }
 
-.simon__yellow-box {
-    width: 50%;
-    height: 50%;
+.simon__sequence--yellow {
     background: yellow;
 }
 
-.simon__blue-box {
-    width: 50%;
-    height: 50%;
+.simon__sequence--blue {
     background: blue;
 }
 
