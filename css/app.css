@@ -17,19 +17,19 @@
 }
 
 .simon__sequence--green {
-    background: green;
+    background: #389138;
 }
 
 .simon__sequence--red {
-    background: red;
+    background: #d42727;
 }
 
 .simon__sequence--yellow {
-    background: yellow;
+    background: #e0e052;
 }
 
 .simon__sequence--blue {
-    background: blue;
+    background: #2e4bac;
 }
 
 .simon__sequence--active {
