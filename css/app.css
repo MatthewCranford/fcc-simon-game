@@ -32,6 +32,10 @@
     background: blue;
 }
 
+.simon__sequence--active {
+    filter: brightness(2);
+}
+
 .simon__controls {
     position: absolute;
     z-index: 1;
