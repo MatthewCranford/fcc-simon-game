@@ -55,14 +55,20 @@ startBtn.addEventListener('click', () => {
 });
 
 function initGame() {
-    // Pick a random num 1-4
-    getRandomMove();
+    let randomSequence = getRandomSequence();
+    console.log(randomSequence);
+
     // Light up random color
+    lightSequence(randomSequence);
     // Increase count
 }
 
-function getRandomMove() {
-    return Math.floor(Math.random() * Math.floor(4) + 1);
+function getRandomSequence() {
+    const randomNumber = Math.floor(Math.random() * Math.floor(4) + 1);
+    const randomSequence = document.querySelector(
+        `[data-sequence="${randomNumber}"]`
+    );
+    return randomSequence;
 }
 
-console.log(getRandomMove());
+function lightSequence(randomMove) {}
