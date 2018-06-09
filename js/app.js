@@ -58,9 +58,14 @@ function initGame() {
     let randomSequence = getRandomSequence();
     console.log(randomSequence);
 
-    // Light up random color
-    lightSequence(randomSequence);
-    // Increase count
+document.querySelector('.simon').addEventListener('click', event => {
+    userInput = event.target;
+    if (
+        parseInt(userInput.getAttribute('data-sequence')) === randomSequenceID
+    ) {
+        console.log('valid');
+        updateCountDisplay();
+        // !!!TODO: Reset variables
 }
 
 function getRandomSequence() {
