@@ -55,8 +55,19 @@ startBtn.addEventListener('click', () => {
 });
 
 function initGame() {
+    turn();
+}
+
+function turn() {
     let randomSequence = getRandomSequence();
-    console.log(randomSequence);
+    temporarilyLightSequence(randomSequence);
+
+    // getUserInput();
+}
+
+// function getUserInput() {
+//     setTimeout(() => {}, 5000);
+// }
 
 document.querySelector('.simon').addEventListener('click', event => {
     userInput = event.target;
