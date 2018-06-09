@@ -71,4 +71,10 @@ function getRandomSequence() {
     return randomSequence;
 }
 
-function lightSequence(randomMove) {}
+function temporarilyLightSequence(sequence) {
+    sequence.classList.toggle('simon__sequence--active');
+    setTimeout(() => {
+        sequence.classList.toggle('simon__sequence--active');
+    }, 1000);
+}
+
