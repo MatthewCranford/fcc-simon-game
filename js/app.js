@@ -78,3 +78,8 @@ function temporarilyLightSequence(sequence) {
     }, 1000);
 }
 
+function updateCountDisplay() {
+    count++;
+    countDisplay = document.getElementById('simon__count-display');
+    countDisplay.innerText = count;
+}
