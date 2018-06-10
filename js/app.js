@@ -54,38 +54,54 @@ document.querySelector('#simon__start-button').addEventListener('click', () => {
 });
 
 function initGame() {
+    count = 0;
+    updateCountDisplay();
     turn();
 }
-
+let randomSequences = [];
 function turn() {
-    console.log('turn');
-    let randomSequence = getRandomSequence();
-    temporarilyLightSequence(randomSequence);
+    addRandomSequence();
+    addRandomSequence();
+    console.log(randomSequences);
+    lightSequences(randomSequences);
+    console.log('done');
 }
 
-function getRandomSequence() {
+function addRandomSequence() {
     randomSequenceID = Math.floor(Math.random() * Math.floor(4) + 1);
     const randomSequence = document.querySelector(
         `[data-sequence="${randomSequenceID}"]`
     );
-    return randomSequence;
+    randomSequences.push(randomSequence);
 }
 
-function temporarilyLightSequence(sequence) {
-    sequence.classList.toggle('simon__sequence--active');
-    setTimeout(() => {
-        sequence.classList.toggle('simon__sequence--active');
-    }, 1000);
+function lightSequences(sequences) {
+    let startIndex = 0;
+    lightSequence(startIndex, sequences);
 }
+
+function lightSequence(index, sequences) {
+    console.log(sequences);
+    if (index !== sequences.length) {
+        setTimeout(() => {
+            sequences[index].classList.toggle('simon__sequence--active');
+            setTimeout(() => {
+                sequences[index].classList.toggle('simon__sequence--active');
+                index++;
+                lightSequence(index, sequences);
+            }, 1000);
+        }, 1000);
+    } else {
+        // getPlayerSequence();
+    }
+}
+
+playerSequence = [];
 
 document.querySelector('.simon').addEventListener('click', event => {
-    userInput = event.target;
-    if (
-        parseInt(userInput.getAttribute('data-sequence')) === randomSequenceID
-    ) {
+    userClick = event.target;
+    if (userClick.getAttribute('data-sequence')) {
         console.log('valid');
-        updateCountDisplay();
-        // !!!TODO: Reset variables
     }
 });
 
