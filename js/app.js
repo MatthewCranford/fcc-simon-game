@@ -18,6 +18,9 @@ let strictOn = false;
 let userInput = null;
 let randomSequenceID = null;
 let count = 0;
+let playerMove = false;
+let playerSequences = [];
+let randomSequences = [];
 
 pwrBtn.addEventListener('change', () => {
     if (pwrBtn.checked === true) {
@@ -58,7 +61,7 @@ function initGame() {
     updateCountDisplay();
     turn();
 }
-let randomSequences = [];
+
 function turn() {
     addRandomSequence();
     addRandomSequence();
@@ -93,15 +96,19 @@ function lightSequence(index, sequences) {
         }, 1000);
     } else {
         // getPlayerSequence();
+        playerMove = true;
     }
 }
 
-playerSequence = [];
-
 document.querySelector('.simon').addEventListener('click', event => {
     userClick = event.target;
-    if (userClick.getAttribute('data-sequence')) {
-        console.log('valid');
+    if (userClick.getAttribute('data-sequence') && playerMove) {
+        playerSequences.push(userClick);
+        console.log(playerSequences);
+        if (playerSequences.length === randomSequences.length) {
+            console.log('Evaluate!');
+            // TODO: Evaluate player sequence
+        }
     }
 });
 
