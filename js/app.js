@@ -64,10 +64,8 @@ function initGame() {
 
 function turn() {
     addRandomSequence();
-    addRandomSequence();
-    console.log(randomSequences);
+    console.log('Random Sequence', randomSequences);
     lightSequences(randomSequences);
-    console.log('done');
 }
 
 function addRandomSequence() {
@@ -84,7 +82,6 @@ function lightSequences(sequences) {
 }
 
 function lightSequence(index, sequences) {
-    console.log(sequences);
     if (index !== sequences.length) {
         setTimeout(() => {
             sequences[index].classList.toggle('simon__sequence--active');
@@ -104,13 +101,27 @@ document.querySelector('.simon').addEventListener('click', event => {
     userClick = event.target;
     if (userClick.getAttribute('data-sequence') && playerMove) {
         playerSequences.push(userClick);
-        console.log(playerSequences);
-        if (playerSequences.length === randomSequences.length) {
-            console.log('Evaluate!');
-            // TODO: Evaluate player sequence
+        console.log('Player Sequence', playerSequences);
+        if (evaluatePlayerSequence()) {
+            console.log('Match!');
+            if (playerSequences.length === randomSequences.length) {
+                console.log('Next Sequence!');
+            }
+        } else {
+            console.log('Miss!');
         }
     }
 });
+
+function evaluatePlayerSequence() {
+    for (sequence in playerSequences) {
+        if (playerSequences[sequence] === randomSequences[sequence]) {
+        } else {
+            return false;
+        }
+    }
+    return true;
+}
 
 function updateCountDisplay() {
     count++;
