@@ -58,7 +58,7 @@ document.querySelector('#simon__start-button').addEventListener('click', () => {
 
 function initGame() {
     count = 0;
-    updateCountDisplay();
+    displayCount();
     turn();
 }
 
@@ -106,7 +106,7 @@ document.querySelector('.simon').addEventListener('click', event => {
             console.log('Match!');
             if (playerSequences.length === randomSequences.length) {
                 console.log('Next Sequence!');
-                updateCountDisplay();
+                addCount();
                 prepareNextTurn();
             }
         } else {
@@ -126,8 +126,17 @@ function evaluatePlayerSequence() {
     return true;
 }
 
-function updateCountDisplay() {
+function addCount() {
     count++;
+    displayCount();
+}
+
+function resetCount() {
+    count = 0;
+    displayCount();
+}
+
+function displayCount() {
     countDisplay = document.getElementById('simon__count-display');
     countDisplay.innerText = count;
 }
@@ -142,11 +151,6 @@ function resetGame() {
     playerMove = false;
     playerSequences = [];
     randomSequences = [];
-    Ad;
-    turn();
-}
 
-function resetCount() {
-    count = 0;
-    displayCount();
+    turn();
 }
