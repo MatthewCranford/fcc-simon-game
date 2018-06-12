@@ -131,11 +131,6 @@ function addCount() {
     displayCount();
 }
 
-function resetCount() {
-    count = 0;
-    displayCount();
-}
-
 function displayCount() {
     countDisplay = document.getElementById('simon__count-display');
     countDisplay.innerText = count;
@@ -151,6 +146,11 @@ function resetGame() {
     playerMove = false;
     playerSequences = [];
     randomSequences = [];
-
+    resetCount();
     turn();
+}
+
+function resetCount() {
+    count = 0;
+    displayCount();
 }
