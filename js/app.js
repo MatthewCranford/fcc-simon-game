@@ -27,6 +27,7 @@ pwrBtn.addEventListener('change', () => {
         pwrOn = true;
     } else {
         pwrOn = false;
+        resetGame();
     }
     showDisplay();
 });
