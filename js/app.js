@@ -111,6 +111,7 @@ document.querySelector('.simon').addEventListener('click', event => {
             }
         } else {
             console.log('Miss!');
+            resetGame();
         }
     }
 });
@@ -134,5 +135,12 @@ function updateCountDisplay() {
 function prepareNextTurn() {
     playerMove = false;
     playerSequences = [];
+    turn();
+}
+
+function resetGame() {
+    playerMove = false;
+    playerSequences = [];
+    randomSequences = [];
     turn();
 }
