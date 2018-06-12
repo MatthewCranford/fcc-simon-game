@@ -113,6 +113,7 @@ document.querySelector('.simon').addEventListener('click', event => {
         } else {
             console.log('Miss!');
             resetGame();
+            turn();
         }
     }
 });
@@ -148,7 +149,6 @@ function resetGame() {
     playerSequences = [];
     randomSequences = [];
     resetCount();
-    turn();
 }
 
 function resetCount() {
