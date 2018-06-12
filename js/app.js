@@ -98,10 +98,17 @@ function lightSequence(index, sequences) {
     }
 }
 
+document.querySelector('.simon').addEventListener('mousedown', event => {
+    mouseDownTarget = event.target;
+    if (mouseDownTarget.getAttribute('data-sequence') && playerMove) {
+        console.log('hey');
+    }
+});
+
 document.querySelector('.simon').addEventListener('click', event => {
-    userClick = event.target;
-    if (userClick.getAttribute('data-sequence') && playerMove) {
-        playerSequences.push(userClick);
+    clickTarget = event.target;
+    if (clickTarget.getAttribute('data-sequence') && playerMove) {
+        playerSequences.push(clickTarget);
         console.log('Player Sequence', playerSequences);
         if (evaluatePlayerSequence()) {
             console.log('Match!');
