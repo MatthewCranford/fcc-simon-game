@@ -142,5 +142,11 @@ function resetGame() {
     playerMove = false;
     playerSequences = [];
     randomSequences = [];
+    Ad;
     turn();
+}
+
+function resetCount() {
+    count = 0;
+    displayCount();
 }
