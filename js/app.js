@@ -98,13 +98,6 @@ function lightSequence(index, sequences) {
     }
 }
 
-document.querySelector('.simon').addEventListener('mousedown', event => {
-    mouseDownTarget = event.target;
-    if (mouseDownTarget.getAttribute('data-sequence') && playerMove) {
-        console.log('hey');
-    }
-});
-
 document.querySelector('.simon').addEventListener('click', event => {
     clickTarget = event.target;
     if (clickTarget.getAttribute('data-sequence') && playerMove) {
@@ -161,4 +154,18 @@ function resetGame() {
 function resetCount() {
     count = 0;
     displayCount();
+}
+
+document
+    .querySelector('.simon')
+    .addEventListener('mousedown', togglePlayerClick);
+
+document.querySelector('.simon').addEventListener('mouseup', togglePlayerClick);
+
+function togglePlayerClick(event) {
+    mouseDownTarget = event.target;
+    if (mouseDownTarget.getAttribute('data-sequence') && playerMove) {
+        console.log('hey');
+        mouseDownTarget.classList.toggle('simon__sequence--active');
+    }
 }
