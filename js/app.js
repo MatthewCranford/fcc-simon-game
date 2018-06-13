@@ -183,3 +183,17 @@ function togglePlayerClick(event) {
         playSound(sequenceNum);
     }
 }
+
+document
+    .querySelector('.simon')
+    .addEventListener('mousedown', togglePlayerClick);
+
+document.querySelector('.simon').addEventListener('mouseup', togglePlayerClick);
+
+function togglePlayerClick(event) {
+    mouseDownTarget = event.target;
+    if (mouseDownTarget.getAttribute('data-sequence') && playerMove) {
+        console.log('hey');
+        mouseDownTarget.classList.toggle('simon__sequence--active');
+    }
+}
