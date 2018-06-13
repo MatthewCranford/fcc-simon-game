@@ -108,7 +108,7 @@ document.querySelector('.simon').addEventListener('click', event => {
             if (playerSequences.length === randomSequences.length) {
                 console.log('Next Sequence!');
                 addCount();
-                prepareNextTurn();
+                prepareNewTurn();
             }
         } else {
             console.log('Miss!');
@@ -139,7 +139,7 @@ function displayCount() {
     countDisplay.innerText = count;
 }
 
-function prepareNextTurn() {
+function prepareNewTurn() {
     playerMove = false;
     playerSequences = [];
     turn();
