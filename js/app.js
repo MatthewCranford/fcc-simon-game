@@ -103,6 +103,7 @@ function lightSequence(index, sequences) {
     }
 }
 
+<<<<<<< HEAD
 function playSound(sequenceNum) {
     switch (sequenceNum) {
         case '1':
@@ -120,6 +121,16 @@ function playSound(sequenceNum) {
     }
 }
 
+||||||| merged common ancestors
+document.querySelector('.simon').addEventListener('mousedown', event => {
+    mouseDownTarget = event.target;
+    if (mouseDownTarget.getAttribute('data-sequence') && playerMove) {
+        console.log('hey');
+    }
+});
+
+=======
+>>>>>>> 81b3f4d971dafeec8f8aa9285cfdacb7364f1bdb
 document.querySelector('.simon').addEventListener('click', event => {
     clickTarget = event.target;
     if (clickTarget.getAttribute('data-sequence') && playerMove) {
@@ -181,5 +192,19 @@ function togglePlayerClick(event) {
     if (sequenceNum && playerMove) {
         mouseDownTarget.classList.toggle('simon__sequence--active');
         playSound(sequenceNum);
+    }
+}
+
+document
+    .querySelector('.simon')
+    .addEventListener('mousedown', togglePlayerClick);
+
+document.querySelector('.simon').addEventListener('mouseup', togglePlayerClick);
+
+function togglePlayerClick(event) {
+    mouseDownTarget = event.target;
+    if (mouseDownTarget.getAttribute('data-sequence') && playerMove) {
+        console.log('hey');
+        mouseDownTarget.classList.toggle('simon__sequence--active');
     }
 }
