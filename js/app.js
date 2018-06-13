@@ -68,7 +68,6 @@ function initGame() {
 
 function turn() {
     addRandomSequence();
-    console.log('Random Sequence', randomSequences);
     lightSequences(randomSequences);
 }
 
@@ -87,10 +86,13 @@ function lightSequences(sequences) {
 
 function lightSequence(index, sequences) {
     if (index !== sequences.length) {
+        let sequence = sequences[index];
+        let sequenceNum = sequence.getAttribute('data-sequence');
         setTimeout(() => {
-            sequences[index].classList.toggle('simon__sequence--active');
+            sequence.classList.toggle('simon__sequence--active');
+            playSound(sequenceNum);
             setTimeout(() => {
-                sequences[index].classList.toggle('simon__sequence--active');
+                sequence.classList.toggle('simon__sequence--active');
                 index++;
                 lightSequence(index, sequences);
             }, 1000);
@@ -101,20 +103,33 @@ function lightSequence(index, sequences) {
     }
 }
 
+function playSound(sequenceNum) {
+    switch (sequenceNum) {
+        case '1':
+            soundOne.play();
+            break;
+        case '2':
+            soundTwo.play();
+            break;
+        case '3':
+            soundThree.play();
+            break;
+        case '4':
+            soundFour.play();
+            break;
+    }
+}
+
 document.querySelector('.simon').addEventListener('click', event => {
     clickTarget = event.target;
     if (clickTarget.getAttribute('data-sequence') && playerMove) {
         playerSequences.push(clickTarget);
-        console.log('Player Sequence', playerSequences);
         if (evaluatePlayerSequence()) {
-            console.log('Match!');
             if (playerSequences.length === randomSequences.length) {
-                console.log('Next Sequence!');
                 addCount();
                 prepareNewTurn();
             }
         } else {
-            console.log('Miss!');
             repeatTurn();
             // resetGame();
             // turn();
@@ -162,8 +177,9 @@ document.querySelector('.simon').addEventListener('mouseup', togglePlayerClick);
 
 function togglePlayerClick(event) {
     mouseDownTarget = event.target;
-    if (mouseDownTarget.getAttribute('data-sequence') && playerMove) {
-        console.log('hey');
+    sequenceNum = mouseDownTarget.getAttribute('data-sequence');
+    if (sequenceNum && playerMove) {
         mouseDownTarget.classList.toggle('simon__sequence--active');
+        playSound(sequenceNum);
     }
 }
