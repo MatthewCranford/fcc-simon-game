@@ -112,8 +112,9 @@ document.querySelector('.simon').addEventListener('click', event => {
             }
         } else {
             console.log('Miss!');
-            resetGame();
-            turn();
+            repeatTurn();
+            // resetGame();
+            // turn();
         }
     }
 });
@@ -142,6 +143,12 @@ function prepareNextTurn() {
     playerMove = false;
     playerSequences = [];
     turn();
+}
+
+function repeatTurn() {
+    playerMove = false;
+    playerSequences = [];
+    lightSequences(randomSequences);
 }
 
 function resetGame() {
