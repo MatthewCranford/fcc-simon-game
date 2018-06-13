@@ -27,7 +27,7 @@ pwrBtn.addEventListener('change', () => {
         pwrOn = true;
     } else {
         pwrOn = false;
-        resetGame();
+        initGame();
     }
     showDisplay();
 });
@@ -54,13 +54,16 @@ document
 document.querySelector('#simon__start-button').addEventListener('click', () => {
     if (pwrOn) {
         initGame();
+        turn();
     }
 });
 
 function initGame() {
     count = 0;
+    playerMove = false;
+    playerSequences = [];
+    randomSequences = [];
     displayCount();
-    turn();
 }
 
 function turn() {
@@ -149,18 +152,6 @@ function repeatTurn() {
     playerMove = false;
     playerSequences = [];
     lightSequences(randomSequences);
-}
-
-function resetGame() {
-    playerMove = false;
-    playerSequences = [];
-    randomSequences = [];
-    resetCount();
-}
-
-function resetCount() {
-    count = 0;
-    displayCount();
 }
 
 document
