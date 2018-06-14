@@ -137,7 +137,11 @@ function playerClick(event) {
         if (evaluatePlayerSequence()) {
             if (playerSequences.length === randomSequences.length) {
                 addCount();
-                prepareNewTurn();
+                if (count === 20) {
+                    victory();
+                } else {
+                    prepareNewTurn();
+                }
             }
         } else {
             wrongMove();
@@ -156,6 +160,7 @@ function evaluatePlayerSequence() {
 }
 
 function addCount() {
+    count = 19;
     count++;
     displayCount();
 }
@@ -163,6 +168,16 @@ function addCount() {
 function displayCount() {
     countDisplay = document.getElementById('simon__count-display');
     countDisplay.innerText = count;
+}
+
+function victory() {
+    playerMove = false;
+    countDisplay = document.getElementById('simon__count-display');
+    countDisplay.innerText = 'Win!';
+    setTimeout(() => {
+        initGame();
+        turn();
+    }, 3000);
 }
 
 function prepareNewTurn() {
