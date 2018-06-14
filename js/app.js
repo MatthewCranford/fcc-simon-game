@@ -120,30 +120,30 @@ function playSound(sequenceNum) {
     }
 }
 
-document.querySelector('.simon').addEventListener('click', event => {
+document.querySelector('.simon').addEventListener('click', playerClick);
+
+function playerClick(event) {
     clickTarget = event.target;
     sequenceNum = clickTarget.getAttribute('data-sequence');
-    if (clickTarget.getAttribute('data-sequence') && playerMove) {
+    if (sequenceNum && playerMove) {
         playerSequences.push(clickTarget);
         clickTarget.classList.toggle('simon__sequence--active');
         playSound(sequenceNum);
         (function(private) {
             setTimeout(() => {
                 private.classList.toggle('simon__sequence--active');
-                if (evaluatePlayerSequence()) {
-                    if (playerSequences.length === randomSequences.length) {
-                        addCount();
-                        prepareNewTurn();
-                    }
-                } else {
-                    repeatTurn();
-                    // resetGame();
-                    // turn();
-                }
             }, 500);
         })(clickTarget);
+        if (evaluatePlayerSequence()) {
+            if (playerSequences.length === randomSequences.length) {
+                addCount();
+                prepareNewTurn();
+            }
+        } else {
+            wrongMove();
+        }
     }
-});
+}
 
 function evaluatePlayerSequence() {
     for (sequence in playerSequences) {
@@ -171,8 +171,17 @@ function prepareNewTurn() {
     turn();
 }
 
-function repeatTurn() {
+function wrongMove() {
+    let countDisplay = document.querySelector('#simon__count-display');
     playerMove = false;
+    countDisplay.innerHTML = 'Wrong';
+    setTimeout(() => {
+        countDisplay.innerHTML = count;
+        repeatTurn();
+    }, 3000);
+}
+
+function repeatTurn() {
     playerSequences = [];
     lightSequences(randomSequences);
 }
