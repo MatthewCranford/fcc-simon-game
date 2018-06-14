@@ -95,8 +95,8 @@ function lightSequence(index, sequences) {
                 sequence.classList.toggle('simon__sequence--active');
                 index++;
                 lightSequence(index, sequences);
-            }, 1000);
-        }, 1000);
+            }, 800);
+        }, 800);
     } else {
         // getPlayerSequence();
         playerMove = true;
@@ -122,18 +122,26 @@ function playSound(sequenceNum) {
 
 document.querySelector('.simon').addEventListener('click', event => {
     clickTarget = event.target;
+    sequenceNum = clickTarget.getAttribute('data-sequence');
     if (clickTarget.getAttribute('data-sequence') && playerMove) {
         playerSequences.push(clickTarget);
-        if (evaluatePlayerSequence()) {
-            if (playerSequences.length === randomSequences.length) {
-                addCount();
-                prepareNewTurn();
-            }
-        } else {
-            repeatTurn();
-            // resetGame();
-            // turn();
-        }
+        clickTarget.classList.toggle('simon__sequence--active');
+        playSound(sequenceNum);
+        (function(private) {
+            setTimeout(() => {
+                private.classList.toggle('simon__sequence--active');
+                if (evaluatePlayerSequence()) {
+                    if (playerSequences.length === randomSequences.length) {
+                        addCount();
+                        prepareNewTurn();
+                    }
+                } else {
+                    repeatTurn();
+                    // resetGame();
+                    // turn();
+                }
+            }, 500);
+        })(clickTarget);
     }
 });
 
@@ -167,33 +175,4 @@ function repeatTurn() {
     playerMove = false;
     playerSequences = [];
     lightSequences(randomSequences);
-}
-
-document
-    .querySelector('.simon')
-    .addEventListener('mousedown', togglePlayerClick);
-
-document.querySelector('.simon').addEventListener('mouseup', togglePlayerClick);
-
-function togglePlayerClick(event) {
-    mouseDownTarget = event.target;
-    sequenceNum = mouseDownTarget.getAttribute('data-sequence');
-    if (sequenceNum && playerMove) {
-        mouseDownTarget.classList.toggle('simon__sequence--active');
-        playSound(sequenceNum);
-    }
-}
-
-document
-    .querySelector('.simon')
-    .addEventListener('mousedown', togglePlayerClick);
-
-document.querySelector('.simon').addEventListener('mouseup', togglePlayerClick);
-
-function togglePlayerClick(event) {
-    mouseDownTarget = event.target;
-    if (mouseDownTarget.getAttribute('data-sequence') && playerMove) {
-        console.log('hey');
-        mouseDownTarget.classList.toggle('simon__sequence--active');
-    }
 }
