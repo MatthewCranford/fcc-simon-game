@@ -98,7 +98,6 @@ function lightSequence(index, sequences) {
             }, 800);
         }, 800);
     } else {
-        // getPlayerSequence();
         playerMove = true;
     }
 }
@@ -125,6 +124,7 @@ document.querySelector('.simon').addEventListener('click', playerClick);
 function playerClick(event) {
     clickTarget = event.target;
     sequenceNum = clickTarget.getAttribute('data-sequence');
+
     if (sequenceNum && playerMove) {
         playerSequences.push(clickTarget);
         clickTarget.classList.toggle('simon__sequence--active');
@@ -160,7 +160,6 @@ function evaluatePlayerSequence() {
 }
 
 function addCount() {
-    count = 19;
     count++;
     displayCount();
 }
