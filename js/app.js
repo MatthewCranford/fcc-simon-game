@@ -173,11 +173,22 @@ function prepareNewTurn() {
 
 function wrongMove() {
     let countDisplay = document.querySelector('#simon__count-display');
+    let strictDisplay = document.querySelector('#simon__strict-display');
     playerMove = false;
     countDisplay.innerHTML = 'Wrong';
+    if (strictOn) {
+        strictDisplay.innerHTML = '';
+    }
     setTimeout(() => {
-        countDisplay.innerHTML = count;
-        repeatTurn();
+        if (strictOn) {
+            countDisplay.innerHTML = 0;
+            strictDisplay.innerHTML = 's';
+            initGame();
+            turn();
+        } else {
+            countDisplay.innerHTML = count;
+            repeatTurn();
+        }
     }, 3000);
 }
 
