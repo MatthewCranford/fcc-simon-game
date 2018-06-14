@@ -102,6 +102,13 @@ function lightSequence(index, sequences) {
     }
 }
 
+document.querySelector('.simon').addEventListener('mousedown', event => {
+    mouseDownTarget = event.target;
+    if (mouseDownTarget.getAttribute('data-sequence') && playerMove) {
+        console.log('hey');
+    }
+});
+
 function playSound(sequenceNum) {
     switch (sequenceNum) {
         case '1':
