@@ -35,27 +35,30 @@ function togglePower() {
     } else {
         pwrOn = false;
     }
-    showDisplay();
+    toggleDisplay();
 }
 
-function showDisplay() {
+function toggleDisplay() {
     document.querySelector('.simon__display').classList.toggle('hide');
 }
 
 document
     .querySelector('#simon__strict-button')
-    .addEventListener('click', () => {
-        if (pwrOn) {
-            strictDisplay = document.querySelector('#simon__strict-display');
-            if (strictOn) {
-                strictOn = false;
-                strictDisplay.innerHTML = '';
-            } else {
-                strictOn = true;
-                strictDisplay.innerHTML = 's';
-            }
+    .addEventListener('click', toggleStrict);
+
+function toggleStrict() {
+    if (pwrOn) {
+        strictDisplay = document.querySelector('#simon__strict-display');
+
+        if (strictOn) {
+            strictOn = false;
+            strictDisplay.innerHTML = '';
+        } else {
+            strictOn = true;
+            strictDisplay.innerHTML = 's';
         }
-    });
+    }
+}
 
 document.querySelector('#simon__start-button').addEventListener('click', () => {
     if (pwrOn) {
