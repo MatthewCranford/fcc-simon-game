@@ -31,9 +31,9 @@ function togglePower() {
     const pwrBtn = document.querySelector('#simon__power-button');
     if (pwrBtn.checked === true) {
         pwrOn = true;
-        initGame();
     } else {
         pwrOn = false;
+        prepareNewGame();
     }
     toggleDisplay();
 }
@@ -60,14 +60,18 @@ function toggleStrict() {
     }
 }
 
-document.querySelector('#simon__start-button').addEventListener('click', () => {
+document
+    .querySelector('#simon__start-button')
+    .addEventListener('click', startGame);
+
+function startGame() {
     if (pwrOn) {
-        initGame();
+        prepareNewGame();
         turn();
     }
-});
+}
 
-function initGame() {
+function prepareNewGame() {
     count = 0;
     playerMove = false;
     playerSequences = [];
@@ -190,7 +194,7 @@ function victory() {
     countDisplay = document.getElementById('simon__count-display');
     countDisplay.innerText = 'Win!';
     setTimeout(() => {
-        initGame();
+        prepareNewGame();
         turn();
     }, 3000);
 }
@@ -213,7 +217,7 @@ function wrongMove() {
         if (strictOn) {
             countDisplay.innerText = 0;
             strictDisplay.innerText = 's';
-            initGame();
+            prepareNewGame();
             turn();
         } else {
             countDisplay.innerText = count;
