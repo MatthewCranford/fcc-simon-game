@@ -12,7 +12,8 @@ const soundFour = new Audio(
     'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'
 );
 
-const pwrBtn = document.getElementById('simon__power-button');
+// Globals
+
 let pwrOn = false;
 let strictOn = false;
 let userInput = null;
@@ -22,15 +23,20 @@ let playerMove = false;
 let playerSequences = [];
 let randomSequences = [];
 
-pwrBtn.addEventListener('change', () => {
+document
+    .querySelector('#simon__power-button')
+    .addEventListener('change', togglePower);
+
+function togglePower() {
+    const pwrBtn = document.querySelector('#simon__power-button');
     if (pwrBtn.checked === true) {
         pwrOn = true;
+        initGame();
     } else {
         pwrOn = false;
-        initGame();
     }
     showDisplay();
-});
+}
 
 function showDisplay() {
     document.querySelector('.simon__display').classList.toggle('hide');
