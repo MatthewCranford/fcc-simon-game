@@ -100,10 +100,9 @@ function lightSequences(sequences) {
 function lightSequence(index, sequences) {
     if (index !== sequences.length) {
         let sequence = sequences[index];
-        let sequenceNum = sequence.getAttribute('data-sequence');
         setTimeout(() => {
             sequence.classList.toggle('simon__sequence--active');
-            playSound(sequenceNum);
+            playSound(sequence);
             setTimeout(() => {
                 sequence.classList.toggle('simon__sequence--active');
                 index++;
@@ -115,8 +114,10 @@ function lightSequence(index, sequences) {
     }
 }
 
-function playSound(sequenceNum) {
-    switch (sequenceNum) {
+function playSound(sequence) {
+    let sequenceDataNum = sequence.getAttribute('data-sequence');
+
+    switch (sequenceDataNum) {
         case '1':
             soundOne.play();
             break;
@@ -135,13 +136,12 @@ function playSound(sequenceNum) {
 document.querySelector('.simon').addEventListener('click', playerClick);
 
 function playerClick(event) {
-    clickTarget = event.target;
-    sequenceNum = clickTarget.getAttribute('data-sequence');
+    let clickTarget = event.target;
 
     if (isPlayerClickValid(clickTarget)) {
         playerSequences.push(clickTarget);
         clickTarget.classList.toggle('simon__sequence--active');
-        playSound(sequenceNum);
+        playSound(clickTarget);
 
         // Maintain click target with IIFE closure during timeout
         (function(closuredClickTarget) {
