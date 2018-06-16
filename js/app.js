@@ -13,7 +13,6 @@ const soundFour = new Audio(
 );
 
 // Globals
-
 let pwrOn = false;
 let strictOn = false;
 let userInput = null;
@@ -100,9 +99,13 @@ function lightSequences(sequences) {
 function lightSequence(index, sequences) {
     if (index !== sequences.length) {
         let sequence = sequences[index];
+
+        // Delay before toggling light and playing sound
         setTimeout(() => {
             sequence.classList.toggle('simon__sequence--active');
             playSound(sequence);
+
+            // Delay before toggling off light and calling next sequence
             setTimeout(() => {
                 sequence.classList.toggle('simon__sequence--active');
                 index++;
