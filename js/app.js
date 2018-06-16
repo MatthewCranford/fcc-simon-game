@@ -192,6 +192,8 @@ function victory() {
     playerMove = false;
     countDisplay = document.getElementById('simon__count-display');
     countDisplay.innerText = 'Win!';
+
+    // Delay between victory and new game
     setTimeout(() => {
         prepareNewGame();
         turn();
@@ -212,6 +214,8 @@ function wrongMove() {
     if (strictOn) {
         strictDisplay.innerText = '';
     }
+
+    // Delay between wrong move and next action
     setTimeout(() => {
         if (strictOn) {
             countDisplay.innerText = 0;
