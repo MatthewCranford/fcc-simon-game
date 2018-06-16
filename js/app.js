@@ -138,7 +138,7 @@ function playerClick(event) {
     clickTarget = event.target;
     sequenceNum = clickTarget.getAttribute('data-sequence');
 
-    if (sequenceNum && playerMove) {
+    if (isPlayerClickValid(clickTarget)) {
         playerSequences.push(clickTarget);
         clickTarget.classList.toggle('simon__sequence--active');
         playSound(sequenceNum);
@@ -155,6 +155,10 @@ function playerClick(event) {
             wrongMove();
         }
     }
+}
+
+function isPlayerClickValid(clickTarget) {
+    return clickTarget.getAttribute('data-sequence') && playerMove;
 }
 
 function isPlayerSequenceValid() {
