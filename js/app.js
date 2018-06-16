@@ -148,14 +148,7 @@ function playerClick(event) {
             }, 500);
         })(clickTarget);
         if (isPlayerSequenceValid()) {
-            if (playerSequences.length === randomSequences.length) {
-                addCount();
-                if (count === 20) {
-                    victory();
-                } else {
-                    prepareNewTurn();
-                }
-            }
+            correctMove();
         } else {
             wrongMove();
         }
@@ -170,6 +163,17 @@ function isPlayerSequenceValid() {
         }
     }
     return true;
+}
+
+function correctMove() {
+    if (playerSequences.length === randomSequences.length) {
+        addCount();
+        if (count === 20) {
+            victory();
+        } else {
+            prepareNewTurn();
+        }
+    }
 }
 
 function addCount() {
