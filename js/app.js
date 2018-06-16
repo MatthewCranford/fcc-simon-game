@@ -147,7 +147,7 @@ function playerClick(event) {
                 private.classList.toggle('simon__sequence--active');
             }, 500);
         })(clickTarget);
-        if (evaluatePlayerSequence()) {
+        if (isPlayerSequenceValid()) {
             if (playerSequences.length === randomSequences.length) {
                 addCount();
                 if (count === 20) {
@@ -162,7 +162,7 @@ function playerClick(event) {
     }
 }
 
-function evaluatePlayerSequence() {
+function isPlayerSequenceValid() {
     for (sequence in playerSequences) {
         if (playerSequences[sequence] === randomSequences[sequence]) {
         } else {
