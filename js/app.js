@@ -142,9 +142,11 @@ function playerClick(event) {
         playerSequences.push(clickTarget);
         clickTarget.classList.toggle('simon__sequence--active');
         playSound(sequenceNum);
-        (function(private) {
+
+        // Maintain click target with IIFE closure during timeout
+        (function(closuredClickTarget) {
             setTimeout(() => {
-                private.classList.toggle('simon__sequence--active');
+                closuredClickTarget.classList.toggle('simon__sequence--active');
             }, 500);
         })(clickTarget);
         if (isPlayerSequenceValid()) {
